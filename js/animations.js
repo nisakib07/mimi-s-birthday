@@ -435,9 +435,36 @@ class SwipeCarousel {
 class BirthdayQuiz {
   constructor() {
     this.questions = [
-      { q: "Who made this website just for you?", options: ["A robot 🤖", "Someone who loves you 💖", "A stranger 👤", "The internet 🌐"], correct: 1, feedback: "That's right! 💖" },
-      { q: "What's the best thing about you?", options: ["Your smile 😊", "Your laugh 😂", "Your kindness 💛", "ALL of the above! ✨"], correct: 3, feedback: "Obviously! You're the whole package! ✨" },
-      { q: "How special are you?", options: ["Kinda special", "Pretty special", "Very special", "The most special person ever 💎"], correct: 3, feedback: "Don't you ever forget it! 💎" }
+      {
+        q: "Someone spent hours building this whole website. Why? 🤔",
+        options: ["They were bored 😴", "School project 📚", "Because you're worth every second 💖", "They lost a bet 🎲"],
+        correct: 2,
+        feedback: "Every pixel was placed with love! 💖"
+      },
+      {
+        q: "What happens when Mimu walks into a room?",
+        options: ["Nothing, really 😐", "The WiFi gets better 📶", "The room gets 10x brighter ✨", "Everyone hides their food 🍕"],
+        correct: 2,
+        feedback: "You literally light up every room you enter! ✨"
+      },
+      {
+        q: "If Babai's laugh was a sound effect, it would be used for…",
+        options: ["A horror movie jumpscare 😱", "An alarm clock nobody can ignore ⏰", "The sound of pure happiness 🎵", "An expensive car engine starting 🚗"],
+        correct: 2,
+        feedback: "Your laugh is the best soundtrack in the world! 🎵"
+      },
+      {
+        q: "Scientists discovered a new element. Its properties: warm, kind, and ridiculously cute. They named it…",
+        options: ["Mimicatium 💎", "Boringtonite 🪨", "Whateverium 🤷", "404 Element Not Found 💻"],
+        correct: 0,
+        feedback: "The rarest and most precious element in the universe! 💎"
+      },
+      {
+        q: "Final question: How much are you loved?",
+        options: ["A normal amount 📏", "A lot, I guess? 🤷", "More than pizza, and that's saying something 🍕", "So much that someone built an ENTIRE website about it 💛"],
+        correct: 3,
+        feedback: "This whole website is your proof! Never doubt it! 💛"
+      }
     ];
     this.currentQ = 0;
     this.cardEl = document.getElementById('quizCard');

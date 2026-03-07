@@ -141,6 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('startStory');
     if (startBtn) {
       startBtn.addEventListener('click', () => {
+        // Auto-start music on first interaction
+        if (!audioController.isPlaying) {
+          audioController.toggle();
+        }
         document.getElementById('beginning')?.scrollIntoView({ behavior: 'smooth' });
       });
     }

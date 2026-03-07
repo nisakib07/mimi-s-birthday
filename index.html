@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0a0a1a" />
+  <title>Happy Birthday, My Mimicat ✨</title>
+  <meta name="description" content="A personal birthday journey made just for Mimicat." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══ LOADING SCREEN ═══ -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-heart">💝</div>
+      <p class="loader-text">Loading your surprise…</p>
+    </div>
+  </div>
+
+  <!-- ═══ TOUCH SPARKLE CANVAS ═══ -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- ═══ MUSIC TOGGLE ═══ -->
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+    <div class="eq-bars">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </button>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — HERO / INTRO + COUNTDOWN
+       ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-glow hero-glow--rose"></div>
+    <div class="hero-glow hero-glow--lavender"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🎂</span> A Birthday Story
+      </div>
+      <h1 class="hero-title">
+        Today is all about you,<br />
+        <span class="highlight">My Mimicat</span>
+      </h1>
+      <p class="hero-subtitle">A little birthday journey made just for you</p>
+
+      <!-- Birthday Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-days">0</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-hours">0</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-mins">0</span>
+          <span class="countdown-label">Mins</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-secs">0</span>
+          <span class="countdown-label">Secs</span>
+        </div>
+      </div>
+      <div class="countdown-today" id="countdownToday" style="display:none;">
+        🎉 It's Your Birthday! 🎉
+      </div>
+
+      <button class="hero-cta" id="startStory">
+        Start the Story <span class="arrow">↓</span>
+      </button>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — THE BEGINNING
+       ═══════════════════════════════════════════ -->
+  <section id="beginning" class="section-transition">
+    <div class="container beginning-content">
+      <div class="beginning-icon reveal">✨</div>
+      <blockquote class="beginning-quote reveal delay-1">
+        "The day the world got a little brighter…"
+      </blockquote>
+      <div class="beginning-date reveal delay-2">
+        <span>🌟</span> March 12 — A day the stars aligned
+      </div>
+      <p class="beginning-body reveal delay-3">
+        A truly special soul arrived in this world — someone who would grow up
+        to make every room brighter, every moment more meaningful, and every
+        heart around them a little warmer. That someone is you, my Mimicat.
+      </p>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — MEMORY TIMELINE
+       ═══════════════════════════════════════════ -->
+  <section id="memories" class="section-transition">
+    <div class="container" style="text-align:center;">
+      <p class="section-subtitle reveal">Our Journey Together</p>
+      <h2 class="section-title reveal delay-1">Favorite Memories</h2>
+      <p class="section-description reveal delay-2">
+        Every moment with you becomes a memory worth keeping forever.
+      </p>
+    </div>
+
+    <div class="timeline container">
+      <div class="timeline-item reveal-left">
+        <div class="timeline-card">
+          <div class="timeline-card-img" style="background: linear-gradient(135deg, #e8a0bf33, #b8a9e833); display:flex; align-items:center; justify-content:center; font-size:3rem;">🌸</div>
+          <div class="timeline-card-body">
+            <div class="timeline-card-year">The First Laugh</div>
+            <h3 class="timeline-card-title">When We Couldn't Stop Laughing</h3>
+            <p class="timeline-card-text">Remember that time we laughed so hard we couldn't breathe? That's when I knew every moment with you would be unforgettable.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-right">
+        <div class="timeline-card">
+          <div class="timeline-card-img" style="background: linear-gradient(135deg, #f0d48a33, #e8a0bf33); display:flex; align-items:center; justify-content:center; font-size:3rem;">☀️</div>
+          <div class="timeline-card-body">
+            <div class="timeline-card-year">Adventures Together</div>
+            <h3 class="timeline-card-title">Our Favorite Adventure</h3>
+            <p class="timeline-card-text">Every adventure is better with you — whether it's exploring new places or just walking nowhere in particular.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-left">
+        <div class="timeline-card">
+          <div class="timeline-card-img" style="background: linear-gradient(135deg, #7eb8da33, #b8a9e833); display:flex; align-items:center; justify-content:center; font-size:3rem;">🌙</div>
+          <div class="timeline-card-body">
+            <div class="timeline-card-year">Late Night Talks</div>
+            <h3 class="timeline-card-title">The Conversations That Matter</h3>
+            <p class="timeline-card-text">Those late-night conversations where we talked about everything and nothing — those are the moments I treasure most.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-right">
+        <div class="timeline-card">
+          <div class="timeline-card-img" style="background: linear-gradient(135deg, #f4978e33, #f0d48a33); display:flex; align-items:center; justify-content:center; font-size:3rem;">🎉</div>
+          <div class="timeline-card-body">
+            <div class="timeline-card-year">Celebrations</div>
+            <h3 class="timeline-card-title">Making Ordinary Days Special</h3>
+            <p class="timeline-card-text">You have this magical ability to turn the most ordinary day into something worth celebrating.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 4 — FUN FACTS / PERSONALITY
+       ═══════════════════════════════════════════ -->
+  <section id="funfacts" class="section-transition">
+    <div class="container">
+      <p class="section-subtitle reveal">Things We Love About You</p>
+      <h2 class="section-title reveal delay-1">The Mimicat Encyclopedia</h2>
+      <p class="section-description reveal delay-2">
+        A definitive collection of what makes you, you. (Tap to reveal more!)
+      </p>
+
+      <div class="funfacts-grid">
+        <div class="funfact-card reveal delay-1">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">😂</div><div class="trait">Laughs at her own jokes first</div></div>
+            <div class="funfact-back"><p>Your laugh is genuinely contagious. You start laughing before even finishing the joke, and honestly, that makes it ten times funnier.</p></div>
+          </div>
+        </div>
+        <div class="funfact-card reveal delay-2">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">⏰</div><div class="trait">Always late, always worth the wait</div></div>
+            <div class="funfact-back"><p>Time works differently in your world, and that's okay because the moment you arrive, everything becomes better.</p></div>
+          </div>
+        </div>
+        <div class="funfact-card reveal delay-3">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">🧠</div><div class="trait">Certified Overthinker</div></div>
+            <div class="funfact-back"><p>Your brain never stops running — but that's because you care deeply about everything and everyone around you.</p></div>
+          </div>
+        </div>
+        <div class="funfact-card reveal delay-4">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">🌟</div><div class="trait">Makes every room brighter</div></div>
+            <div class="funfact-back"><p>There's just something about your energy that lifts everyone up. You walk in and the entire vibe shifts.</p></div>
+          </div>
+        </div>
+        <div class="funfact-card reveal delay-5">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">📸</div><div class="trait">Turns moments into memories</div></div>
+            <div class="funfact-back"><p>You have this rare gift of being fully present and making ordinary moments feel extraordinary.</p></div>
+          </div>
+        </div>
+        <div class="funfact-card reveal delay-6">
+          <div class="funfact-card-inner">
+            <div class="funfact-front"><div class="icon">💛</div><div class="trait">The most caring soul</div></div>
+            <div class="funfact-back"><p>You always put others first, always check in, always remember the little things. That's your superpower.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 5 — FLOATING BUBBLE POP
+       ═══════════════════════════════════════════ -->
+  <section id="bubbles" class="section-transition">
+    <div class="container" style="text-align:center;">
+      <p class="section-subtitle reveal">Pop them all! 🫧</p>
+      <h2 class="section-title reveal delay-1">Bubble of Compliments</h2>
+      <p class="section-description reveal delay-2">
+        Tap each bubble to discover something special about you.
+      </p>
+      <div class="bubble-field" id="bubbleField">
+        <div class="bubble" data-msg="You're beautiful inside and out 💖">💖</div>
+        <div class="bubble" data-msg="Your smile lights up my world ☀️">☀️</div>
+        <div class="bubble" data-msg="You make everything better 🌈">🌈</div>
+        <div class="bubble" data-msg="You're stronger than you know 💪">💪</div>
+        <div class="bubble" data-msg="Your kindness is a superpower 🦋">🦋</div>
+        <div class="bubble" data-msg="You deserve all the happiness 🌟">🌟</div>
+        <div class="bubble" data-msg="I'm lucky to know you 🍀">🍀</div>
+        <div class="bubble" data-msg="You're one in a million 💎">💎</div>
+      </div>
+      <div class="bubble-reveal-msg" id="bubbleRevealMsg"></div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 6 — PHOTO CAROUSEL (Swipeable)
+       ═══════════════════════════════════════════ -->
+  <section id="gallery" class="section-transition">
+    <div class="container">
+      <p class="section-subtitle reveal">Captured Moments</p>
+      <h2 class="section-title reveal delay-1">Our Photo Wall</h2>
+      <p class="section-description reveal delay-2" style="text-align:center;">
+        Swipe through our favorite moments together.
+      </p>
+
+      <div class="carousel-wrapper reveal delay-3">
+        <div class="carousel" id="carousel">
+          <div class="carousel-slide">
+            <div class="polaroid" style="--rotation: 0deg" data-caption="Always smiling ✨">
+              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #e8a0bf44, #b8a9e844); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🌸</div>
+              <span class="caption">Always smiling ✨</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="polaroid" style="--rotation: 0deg" data-caption="The best adventure partner">
+              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #f0d48a44, #e8a0bf44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">☀️</div>
+              <span class="caption">The best adventure partner</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="polaroid" style="--rotation: 0deg" data-caption="Making memories 💫">
+              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #b8a9e844, #7eb8da44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">💫</div>
+              <span class="caption">Making memories 💫</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="polaroid" style="--rotation: 0deg" data-caption="That contagious laugh 😄">
+              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #f4978e44, #f0d48a44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">😄</div>
+              <span class="caption">That contagious laugh 😄</span>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <div class="polaroid" style="--rotation: 0deg" data-caption="My favorite person 💛">
+              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #e8a0bf44, #f0d48a44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">💛</div>
+              <span class="caption">My favorite person 💛</span>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 7 — HEARTFELT MESSAGE (with SVG handwriting)
+       ═══════════════════════════════════════════ -->
+  <section id="message" class="section-transition">
+    <div class="container">
+      <div class="letter-wrapper reveal-scale">
+        <!-- SVG Handwriting Animation -->
+        <svg class="handwriting-svg" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+          <text class="handwriting-text" x="50%" y="45" text-anchor="middle">Happy Birthday ♡</text>
+        </svg>
+        <p class="letter-greeting">Dear Mimicat,</p>
+        <div class="letter-body" id="letterBody">
+          <p class="typewriter-line" data-text="I've been thinking about what to say to you today, and honestly, no words feel big enough.">
+            I've been thinking about what to say to you today, and honestly, no words feel big enough.
+          </p>
+          <br>
+          <p class="typewriter-line" data-text="You are one of those rare people who makes the world feel a little softer, a little warmer, and a whole lot more fun.">
+            You are one of those rare people who makes the world feel a little softer, a little warmer, and a whole lot more fun.
+          </p>
+          <br>
+          <p class="typewriter-line" data-text="The way you care about people, the way you light up when you laugh, the way you turn even the smallest moment into something beautiful — that's your magic.">
+            The way you care about people, the way you light up when you laugh, the way you turn even the smallest moment into something beautiful — that's your magic.
+          </p>
+          <br>
+          <p class="typewriter-line" data-text="I hope this year brings you everything your heart desires and more. You deserve the world, and I hope you never forget that.">
+            I hope this year brings you everything your heart desires and more. You deserve the world, and I hope you never forget that.
+          </p>
+        </div>
+        <p class="letter-signature">With all my love ❤️</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 8 — GUESS WHO QUIZ
+       ═══════════════════════════════════════════ -->
+  <section id="quiz" class="section-transition">
+    <div class="container" style="text-align:center;">
+      <p class="section-subtitle reveal">Before the surprise…</p>
+      <h2 class="section-title reveal delay-1">Quick Quiz! 🤔</h2>
+      <p class="section-description reveal delay-2">
+        Answer these to unlock your surprise!
+      </p>
+
+      <div class="quiz-card reveal delay-3" id="quizCard">
+        <div class="quiz-progress" id="quizProgress">Question 1 of 3</div>
+        <p class="quiz-question" id="quizQuestion">Who made this website just for you?</p>
+        <div class="quiz-options" id="quizOptions">
+          <!-- Options injected by JS -->
+        </div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+      </div>
+
+      <div class="quiz-complete" id="quizComplete" style="display:none;">
+        <div class="quiz-complete-emoji">🎉</div>
+        <h3>You got them all right!</h3>
+        <p>Now scroll down for your surprise…</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <div class="line"></div><div class="diamond"></div><div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 9 — SURPRISE (Animated Cake + Gift)
+       ═══════════════════════════════════════════ -->
+  <section id="surprise" class="section-transition">
+    <div class="surprise-content">
+      <p class="surprise-pretext reveal">And now, one last thing…</p>
+
+      <!-- Animated Birthday Cake -->
+      <div class="cake-wrapper reveal delay-1" id="cakeWrapper">
+        <div class="cake">
+          <div class="cake-top">
+            <div class="candle"><div class="flame" id="flame1"></div></div>
+            <div class="candle"><div class="flame" id="flame2"></div></div>
+            <div class="candle"><div class="flame" id="flame3"></div></div>
+          </div>
+          <div class="cake-layer cake-layer-1"></div>
+          <div class="cake-layer cake-layer-2"></div>
+          <div class="cake-layer cake-layer-3"></div>
+        </div>
+        <p class="cake-instruction" id="cakeInstruction">🎂 Tap the candles to blow them out!</p>
+      </div>
+
+      <button class="gift-open-btn reveal delay-2" id="openGift" style="display:none;">
+        🎁 Open Your Surprise
+      </button>
+
+      <div class="surprise-message" id="surpriseMessage">
+        <span class="surprise-emoji">🥳🎉🎂</span>
+        <h3>You Are Incredibly Special</h3>
+        <p>
+          Not everyone gets a website made just for them, but not everyone is you.
+          You are loved, cherished, and celebrated — today and every single day.
+          Thank you for being the amazing person you are, Mimicat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 10 — FINAL BIRTHDAY WISH
+       ═══════════════════════════════════════════ -->
+  <section id="final-wish" class="section-transition">
+    <canvas id="confetti-canvas"></canvas>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="final-content">
+      <div class="final-wish-emoji reveal">🎂</div>
+      <h2 class="final-wish-title reveal delay-1">
+        Happy Birthday,<br />
+        <span class="name">My Mimicat 🎉</span>
+      </h2>
+      <p class="final-wish-message reveal delay-2">
+        You make life more beautiful just by being in it.<br />
+        Wishing you love, laughter, and everything you deserve.<br />
+        This was made just for you. 💛
+      </p>
+      <p class="final-signoff reveal delay-3">— Made with ❤️ for the most amazing person</p>
+      <button class="replay-btn reveal delay-4" id="replayBtn">
+        ✨ Replay the Story
+      </button>
+    </div>
+  </section>
+
+  <script src="js/animations.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

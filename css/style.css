@@ -114,18 +114,77 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 }
 
 /* ============================================================
-   LOADING SCREEN
+   LOCK SCREEN — Full-page countdown gate
    ============================================================ */
-.loader {
-  position: fixed; inset: 0; z-index: 9999; background: var(--bg-primary);
+.lock-screen {
+  position: fixed; inset: 0; z-index: 10000;
+  background: var(--gradient-hero);
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  text-align: center; overflow: hidden;
+  transition: opacity 1.2s ease, transform 1.2s var(--ease-smooth), visibility 1.2s ease;
 }
-.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-content { text-align: center; }
-.loader-heart { font-size: 3rem; animation: loaderPulse 1.2s ease-in-out infinite; }
-@keyframes loaderPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-.loader-text { font-family: var(--font-accent); font-size: 1.2rem; color: var(--text-secondary); margin-top: 16px; animation: fadeInUp 1s var(--ease-out) 0.3s both; }
+.lock-screen.unlocked {
+  opacity: 0; transform: scale(1.15); visibility: hidden; pointer-events: none;
+}
+#lock-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+
+.lock-glow {
+  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  filter: blur(100px); opacity: 0.25; z-index: 0;
+  animation: glowPulse 6s ease-in-out infinite alternate;
+}
+.lock-glow--rose { background: var(--accent-rose); top: 20%; left: 10%; }
+.lock-glow--lavender { background: var(--accent-lavender); bottom: 15%; right: 10%; animation-delay: -3s; }
+
+.lock-content { position: relative; z-index: 2; padding: 0 32px; }
+
+.lock-emoji {
+  font-size: 4rem; margin-bottom: 24px;
+  animation: floatSoft 4s ease-in-out infinite, fadeInUp 1s var(--ease-out) 0.2s both;
+}
+
+.lock-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 7vw, 3.5rem);
+  font-weight: 800; line-height: 1.2; margin-bottom: 16px;
+  background: var(--gradient-magic);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: fadeInUp 1s var(--ease-out) 0.4s both;
+}
+
+.lock-subtitle {
+  font-family: var(--font-accent); font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-secondary); margin-bottom: 40px;
+  animation: fadeInUp 1s var(--ease-out) 0.6s both;
+}
+
+.lock-countdown {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 32px; animation: fadeInUp 1s var(--ease-out) 0.8s both;
+}
+.lock-countdown .countdown-num { font-size: clamp(2rem, 8vw, 3.5rem); }
+.lock-countdown .countdown-sep { font-size: 2rem; margin-top: -16px; }
+
+.lock-date {
+  font-family: var(--font-accent); font-size: 1.3rem; color: var(--accent-gold);
+  margin-bottom: 20px; animation: fadeInUp 1s var(--ease-out) 1s both;
+}
+
+.lock-hearts {
+  font-size: 1.5rem; letter-spacing: 8px;
+  animation: fadeInUp 1s var(--ease-out) 1.2s both, pulseText 3s ease-in-out infinite 2s;
+}
+
+/* Hidden main site */
+.main-site-hidden { display: none; }
+.main-site-visible { display: block; }
+
+/* Hero birthday badge */
+.hero-birthday-badge {
+  font-family: var(--font-accent); font-size: 1.4rem; color: var(--accent-gold);
+  margin-bottom: 24px; animation: fadeInUp 1s var(--ease-out) 0.9s both, pulseText 2s ease-in-out infinite 2s;
+}
+
+@keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; transform: scale(1.05); } }
 
 
 /* ============================================================
@@ -263,7 +322,8 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 .timeline-item:nth-child(even)::before { left: -8px; }
 .timeline-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s ease; }
 .timeline-card:active { transform: scale(0.98); }
-.timeline-card-img { width: 100%; height: 200px; object-fit: cover; }
+.timeline-card-img { width: 100%; height: 200px; overflow: hidden; }
+.timeline-card-img img { width: 100%; height: 100%; object-fit: cover; }
 .timeline-card-body { padding: 20px 24px; }
 .timeline-card-year { font-family: var(--font-accent); font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 6px; }
 .timeline-card-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
@@ -361,6 +421,9 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 .carousel-slide .polaroid {
   background: #faf8f5; padding: 12px 12px 40px 12px; border-radius: 4px;
   box-shadow: var(--shadow-card); position: relative; width: 100%;
+}
+.carousel-slide .polaroid img {
+  width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px;
 }
 
 .carousel-slide .polaroid .caption {

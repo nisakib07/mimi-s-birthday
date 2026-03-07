@@ -13,47 +13,21 @@
 </head>
 <body>
 
-  <!-- ═══ LOADING SCREEN ═══ -->
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <div class="loader-heart">💝</div>
-      <p class="loader-text">Loading your surprise…</p>
-    </div>
-  </div>
-
-  <!-- ═══ TOUCH SPARKLE CANVAS ═══ -->
-  <canvas id="sparkle-canvas"></canvas>
-
-  <!-- ═══ MUSIC TOGGLE ═══ -->
-  <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
-    <div class="eq-bars">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-  </button>
-
   <!-- ═══════════════════════════════════════════
-       SECTION 1 — HERO / INTRO + COUNTDOWN
+       LOCK SCREEN — Countdown until March 12
+       Shows only this screen until birthday arrives.
        ═══════════════════════════════════════════ -->
-  <section id="hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-glow hero-glow--rose"></div>
-    <div class="hero-glow hero-glow--lavender"></div>
+  <div class="lock-screen" id="lockScreen">
+    <canvas id="lock-canvas"></canvas>
+    <div class="lock-glow lock-glow--rose"></div>
+    <div class="lock-glow lock-glow--lavender"></div>
 
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>🎂</span> A Birthday Story
-      </div>
-      <h1 class="hero-title">
-        Today is all about you,<br />
-        <span class="highlight">My Mimicat</span>
-      </h1>
-      <p class="hero-subtitle">A little birthday journey made just for you</p>
+    <div class="lock-content">
+      <div class="lock-emoji">🎁</div>
+      <h1 class="lock-title">Something Special<br />is Coming…</h1>
+      <p class="lock-subtitle">A birthday surprise is being prepared for you, Mimicat</p>
 
-      <!-- Birthday Countdown -->
-      <div class="countdown" id="countdown">
+      <div class="lock-countdown" id="lockCountdown">
         <div class="countdown-item">
           <span class="countdown-num" id="cd-days">0</span>
           <span class="countdown-label">Days</span>
@@ -74,9 +48,48 @@
           <span class="countdown-label">Secs</span>
         </div>
       </div>
-      <div class="countdown-today" id="countdownToday" style="display:none;">
-        🎉 It's Your Birthday! 🎉
+
+      <p class="lock-date">March 12 ✨</p>
+      <div class="lock-hearts">💖 💜 🩷</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN SITE — Hidden until birthday
+       ═══════════════════════════════════════════ -->
+  <div id="mainSite" class="main-site-hidden">
+
+  <!-- ═══ TOUCH SPARKLE CANVAS ═══ -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- ═══ MUSIC TOGGLE ═══ -->
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+    <div class="eq-bars">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </button>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — HERO / INTRO
+       ═══════════════════════════════════════════ -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-glow hero-glow--rose"></div>
+    <div class="hero-glow hero-glow--lavender"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🎂</span> A Birthday Story
       </div>
+      <h1 class="hero-title">
+        Today is all about you,<br />
+        <span class="highlight">My Mimicat</span>
+      </h1>
+      <p class="hero-subtitle">A little birthday journey made just for you</p>
+      <div class="hero-birthday-badge">🎉 It's Your Birthday! 🎉</div>
 
       <button class="hero-cta" id="startStory">
         Start the Story <span class="arrow">↓</span>
@@ -128,7 +141,7 @@
     <div class="timeline container">
       <div class="timeline-item reveal-left">
         <div class="timeline-card">
-          <div class="timeline-card-img" style="background: linear-gradient(135deg, #e8a0bf33, #b8a9e833); display:flex; align-items:center; justify-content:center; font-size:3rem;">🌸</div>
+          <div class="timeline-card-img"><img src="assets/contagious-laugh.jpg" alt="When We Couldn't Stop Laughing" loading="lazy"></div>
           <div class="timeline-card-body">
             <div class="timeline-card-year">The First Laugh</div>
             <h3 class="timeline-card-title">When We Couldn't Stop Laughing</h3>
@@ -139,7 +152,7 @@
 
       <div class="timeline-item reveal-right">
         <div class="timeline-card">
-          <div class="timeline-card-img" style="background: linear-gradient(135deg, #f0d48a33, #e8a0bf33); display:flex; align-items:center; justify-content:center; font-size:3rem;">☀️</div>
+          <div class="timeline-card-img"><img src="assets/adventure-partner.jpg" alt="Our Favorite Adventure" loading="lazy"></div>
           <div class="timeline-card-body">
             <div class="timeline-card-year">Adventures Together</div>
             <h3 class="timeline-card-title">Our Favorite Adventure</h3>
@@ -150,7 +163,7 @@
 
       <div class="timeline-item reveal-left">
         <div class="timeline-card">
-          <div class="timeline-card-img" style="background: linear-gradient(135deg, #7eb8da33, #b8a9e833); display:flex; align-items:center; justify-content:center; font-size:3rem;">🌙</div>
+          <div class="timeline-card-img"><img src="assets/always-smiling.jpg" alt="Late Night Talks" loading="lazy"></div>
           <div class="timeline-card-body">
             <div class="timeline-card-year">Late Night Talks</div>
             <h3 class="timeline-card-title">The Conversations That Matter</h3>
@@ -161,7 +174,7 @@
 
       <div class="timeline-item reveal-right">
         <div class="timeline-card">
-          <div class="timeline-card-img" style="background: linear-gradient(135deg, #f4978e33, #f0d48a33); display:flex; align-items:center; justify-content:center; font-size:3rem;">🎉</div>
+          <div class="timeline-card-img"><img src="assets/making-memories.jpg" alt="Making Ordinary Days Special" loading="lazy"></div>
           <div class="timeline-card-body">
             <div class="timeline-card-year">Celebrations</div>
             <h3 class="timeline-card-title">Making Ordinary Days Special</h3>
@@ -275,32 +288,33 @@
         <div class="carousel" id="carousel">
           <div class="carousel-slide">
             <div class="polaroid" style="--rotation: 0deg" data-caption="Always smiling ✨">
-              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #e8a0bf44, #b8a9e844); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">🌸</div>
+              <img src="assets/always-smiling.jpg" alt="Always smiling" loading="lazy">
               <span class="caption">Always smiling ✨</span>
             </div>
           </div>
           <div class="carousel-slide">
             <div class="polaroid" style="--rotation: 0deg" data-caption="The best adventure partner">
-              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #f0d48a44, #e8a0bf44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">☀️</div>
+              <img src="assets/adventure-partner.jpg" alt="The best adventure partner" loading="lazy">
               <span class="caption">The best adventure partner</span>
             </div>
           </div>
           <div class="carousel-slide">
             <div class="polaroid" style="--rotation: 0deg" data-caption="Making memories 💫">
-              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #b8a9e844, #7eb8da44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">💫</div>
+              <img src="assets/making-memories.jpg" alt="Making memories" loading="lazy">
               <span class="caption">Making memories 💫</span>
             </div>
           </div>
           <div class="carousel-slide">
             <div class="polaroid" style="--rotation: 0deg" data-caption="That contagious laugh 😄">
-              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #f4978e44, #f0d48a44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">😄</div>
+              <img src="assets/contagious-laugh.jpg" alt="That contagious laugh" loading="lazy">
               <span class="caption">That contagious laugh 😄</span>
             </div>
           </div>
+
           <div class="carousel-slide">
-            <div class="polaroid" style="--rotation: 0deg" data-caption="My favorite person 💛">
-              <div style="width:100%; aspect-ratio:1; background: linear-gradient(135deg, #e8a0bf44, #f0d48a44); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:3rem;">💛</div>
-              <span class="caption">My favorite person 💛</span>
+            <div class="polaroid" style="--rotation: 0deg" data-caption="My favorite person 💖">
+              <img src="assets/20260115_153736.jpg" alt="My favorite person" loading="lazy">
+              <span class="caption">My favorite person 💖</span>
             </div>
           </div>
         </div>
@@ -451,6 +465,8 @@
       </button>
     </div>
   </section>
+
+  </div><!-- /mainSite -->
 
   <script src="js/animations.js"></script>
   <script src="js/audio.js"></script>

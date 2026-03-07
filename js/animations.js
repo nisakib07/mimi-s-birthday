@@ -84,6 +84,8 @@ class StarfieldParticles {
     }
     this.animId = requestAnimationFrame(() => this.animate());
   }
+
+  destroy() { cancelAnimationFrame(this.animId); }
 }
 
 
@@ -293,36 +295,40 @@ class TypewriterEffect {
 
 // ── Birthday Countdown ──
 class BirthdayCountdown {
-  constructor(month, day) {
+  constructor(month, day, onUnlock, hour = 0, minute = 0) {
     this.targetMonth = month; // 0-indexed: March = 2
     this.targetDay = day;
+    this.targetHour = hour;
+    this.targetMinute = minute;
+    this.onUnlock = onUnlock;
     this.daysEl = document.getElementById('cd-days');
     this.hoursEl = document.getElementById('cd-hours');
     this.minsEl = document.getElementById('cd-mins');
     this.secsEl = document.getElementById('cd-secs');
-    this.countdownEl = document.getElementById('countdown');
-    this.todayEl = document.getElementById('countdownToday');
+    this._isBirthday = false;
     if (this.daysEl) this.start();
+  }
+
+  isBirthday() {
+    const now = new Date();
+    const target = new Date(now.getFullYear(), this.targetMonth, this.targetDay, this.targetHour, this.targetMinute, 0);
+    return now >= target;
   }
 
   start() { this.update(); this.interval = setInterval(() => this.update(), 1000); }
 
   update() {
     const now = new Date();
-    let target = new Date(now.getFullYear(), this.targetMonth, this.targetDay);
+    let target = new Date(now.getFullYear(), this.targetMonth, this.targetDay, this.targetHour, this.targetMinute, 0);
 
-    // If birthday already passed this year, show next year
-    if (now > target) {
-      // Check if it's today
-      if (now.getMonth() === this.targetMonth && now.getDate() === this.targetDay) {
-        this.showToday(); return;
+    // Check if we've reached the target time
+    if (now >= target) {
+      if (!this._isBirthday) {
+        this._isBirthday = true;
+        clearInterval(this.interval);
+        if (this.onUnlock) this.onUnlock();
       }
-      target = new Date(now.getFullYear() + 1, this.targetMonth, this.targetDay);
-    }
-
-    // Check if today is the birthday
-    if (now.getMonth() === this.targetMonth && now.getDate() === this.targetDay) {
-      this.showToday(); return;
+      return;
     }
 
     const diff = target - now;
@@ -331,16 +337,10 @@ class BirthdayCountdown {
     const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-    this.daysEl.textContent = String(days).padStart(2, '0');
-    this.hoursEl.textContent = String(hours).padStart(2, '0');
-    this.minsEl.textContent = String(mins).padStart(2, '0');
-    this.secsEl.textContent = String(secs).padStart(2, '0');
-  }
-
-  showToday() {
-    if (this.countdownEl) this.countdownEl.style.display = 'none';
-    if (this.todayEl) this.todayEl.style.display = 'block';
-    clearInterval(this.interval);
+    if (this.daysEl) this.daysEl.textContent = String(days).padStart(2, '0');
+    if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
+    if (this.minsEl) this.minsEl.textContent = String(mins).padStart(2, '0');
+    if (this.secsEl) this.secsEl.textContent = String(secs).padStart(2, '0');
   }
 }
 
@@ -361,6 +361,7 @@ class SwipeCarousel {
 
   createDots() {
     if (!this.dotsContainer) return;
+    this.dotsContainer.innerHTML = '';
     this.slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');

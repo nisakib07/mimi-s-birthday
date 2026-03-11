@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Birthday Countdown on Lock Screen ──
   const countdown = new BirthdayCountdown(2, 12, () => {
     unlockSite();
-  });
+  }, 0, 2);
 
   // Check immediately: if it's already March 12+, skip the lock
   if (countdown.isBirthday()) {

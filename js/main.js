@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const lockParticles = new StarfieldParticles('lock-canvas');
 
   // ── Birthday Countdown on Lock Screen ──
-  // TESTING: Set to March 7, 2:36 PM (change back to March 12 for production)
-  const countdown = new BirthdayCountdown(2, 7, () => {
+  // TESTING: Set to March 11, 10:50 PM (change back to March 12 for production)
+  const countdown = new BirthdayCountdown(2, 11, () => {
     unlockSite();
-  }, 14, 36);
+  }, 22, 50);
 
   // Check immediately: if it's already March 12+, skip the lock
   if (countdown.isBirthday()) {

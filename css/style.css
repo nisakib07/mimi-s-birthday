@@ -504,17 +504,6 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 .letter-body .typewriter-line { opacity: 0; transform: translateY(10px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
 .letter-body .typewriter-line.done { opacity: 1; transform: translateY(0); }
 
-@media (min-width: 769px) {
-  .letter-body .typewriter-line.typing {
-    opacity: 1; transform: translateY(0); overflow: hidden; white-space: nowrap;
-    border-right: 2px solid var(--accent-rose); width: 0;
-    animation: typeLine var(--type-duration, 2s) steps(var(--char-count, 40)) forwards, blinkCaret 0.7s step-end infinite;
-  }
-  .letter-body .typewriter-line.done { width: 100%; border-right: none; white-space: normal; }
-}
-@keyframes typeLine { from { width: 0; } to { width: 100%; } }
-@keyframes blinkCaret { 50% { border-color: transparent; } }
-
 .letter-signature { text-align: right; font-family: var(--font-accent); font-size: 1.8rem; color: var(--accent-gold); }
 
 

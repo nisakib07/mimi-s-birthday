@@ -261,34 +261,27 @@ function createFloatingHearts(containerId, count = 15) {
 }
 
 
-// ── Typewriter Effect (mobile-aware) ──
+// ── Typewriter Effect (Bangla-compatible, word-by-word) ──
 class TypewriterEffect {
   constructor(containerEl) {
     this.container = containerEl;
     this.lines = containerEl.querySelectorAll('.typewriter-line');
     this.started = false;
-    this.isMobile = window.innerWidth <= 768;
   }
   start() {
     if (this.started) return; this.started = true;
-    if (this.isMobile) {
-      let delay = 0;
-      this.lines.forEach(line => { setTimeout(() => line.classList.add('done'), delay); delay += 400; });
-    } else {
-      let delay = 0;
-      this.lines.forEach(line => {
-        const text = line.getAttribute('data-text') || line.textContent;
-        const charCount = text.length;
-        const duration = Math.max(1.5, charCount * 0.04);
-        line.style.setProperty('--char-count', charCount);
-        line.style.setProperty('--type-duration', duration + 's');
-        setTimeout(() => {
-          line.classList.add('typing');
-          setTimeout(() => { line.classList.remove('typing'); line.classList.add('done'); }, duration * 1000 + 500);
-        }, delay);
-        delay += duration * 1000 + 600;
-      });
-    }
+    // Use sequential fade-in for each paragraph
+    // Each paragraph fades in after the previous finishes
+    let delay = 0;
+    const PARAGRAPH_GAP = 600; // ms between paragraphs
+    const FADE_DURATION = 800; // ms for each paragraph to fade in
+
+    this.lines.forEach(line => {
+      setTimeout(() => {
+        line.classList.add('done');
+      }, delay);
+      delay += FADE_DURATION + PARAGRAPH_GAP;
+    });
   }
 }
 

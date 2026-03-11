@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const lockParticles = new StarfieldParticles('lock-canvas');
 
   // ── Birthday Countdown on Lock Screen ──
-  // TESTING: Set to March 11, 10:50 PM (change back to March 12 for production)
-  const countdown = new BirthdayCountdown(2, 11, () => {
+  const countdown = new BirthdayCountdown(2, 12, () => {
     unlockSite();
-  }, 22, 50);
+  });
 
   // Check immediately: if it's already March 12+, skip the lock
   if (countdown.isBirthday()) {
@@ -40,6 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the full site after a brief delay
     setTimeout(() => initSite(), 300);
+
+    // Auto-play music after unlock animation
+    setTimeout(() => {
+      if (window._audioController && !window._audioController.isPlaying) {
+        window._audioController.toggle();
+      }
+    }, 2000);
   }
 
   function initSite() {
@@ -49,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confetti = new ConfettiCannon('confetti-canvas');
     const celebration = new CelebrationConfetti('confetti-canvas', isMobile);
     const audioController = new AudioController('musicToggle');
+    window._audioController = audioController; // expose for auto-play on unlock
 
     // Floating hearts in final section
     createFloatingHearts('floatingHearts', isMobile ? 10 : 18);
@@ -224,6 +231,20 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.5 });
     dividers.forEach(d => { d.style.opacity = '0'; dividerObserver.observe(d); });
+
+
+    // ── Scroll Progress Bar ──
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = progress + '%';
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
   }
 
 });

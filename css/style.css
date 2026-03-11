@@ -3,7 +3,7 @@
    A dreamy, romantic, story-driven birthday experience
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
 
 /* ── CSS Custom Properties ── */
 :root {
@@ -31,7 +31,8 @@
   --gradient-magic: linear-gradient(135deg, #b8a9e8 0%, #e8a0bf 50%, #f0d48a 100%);
 
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', 'Hind Siliguri', -apple-system, sans-serif;
+  --font-bangla: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
   --font-accent: 'Dancing Script', cursive;
 
   --section-padding: 100px 0;
@@ -55,6 +56,14 @@
 
 /* ── Base ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: var(--gradient-magic); z-index: 10001;
+  transition: width 0.1s linear; border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(232,160,191,0.5);
+}
 
 html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
@@ -619,14 +628,49 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
 .surprise-message {
   opacity: 0; transform: scale(0.7) translateY(30px);
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-bounce);
-  max-width: 500px; margin: 20px auto 0; padding: 36px 40px;
-  background: linear-gradient(135deg, rgba(232,160,191,0.1), rgba(184,169,232,0.1));
-  border: 1px solid rgba(232,160,191,0.15); border-radius: var(--radius-xl);
+  max-width: 520px; margin: 20px auto 0; padding: 40px 36px;
+  background: linear-gradient(145deg, rgba(232,160,191,0.08), rgba(184,169,232,0.08), rgba(240,212,138,0.05));
+  border: 1px solid rgba(232,160,191,0.18); border-radius: var(--radius-xl);
+  position: relative; overflow: hidden;
+}
+.surprise-message::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(232,160,191,0.3) 20px, rgba(232,160,191,0.3) 21px);
+  pointer-events: none;
+}
+.surprise-message::after {
+  content: '✦'; position: absolute; top: 12px; right: 16px; font-size: 1.2rem;
+  color: var(--accent-gold); opacity: 0.4; animation: floatSoft 4s ease-in-out infinite;
 }
 .surprise-message.visible { opacity: 1; transform: scale(1) translateY(0); }
-.surprise-message h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; background: var(--gradient-magic); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.surprise-message h3 {
+  font-family: var(--font-bangla), var(--font-display); font-size: 1.6rem; font-weight: 700;
+  background: var(--gradient-magic);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 20px; position: relative;
+}
 .surprise-message p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; }
 .surprise-emoji { font-size: 3rem; margin-bottom: 12px; display: block; }
+
+/* Poem container & stanzas */
+.poem-container {
+  text-align: center; position: relative; padding: 8px 0;
+}
+.poem-container::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(232,160,191,0.2), rgba(184,169,232,0.2), transparent);
+  transform: translateX(-50%);
+}
+.poem-stanza {
+  font-family: var(--font-bangla); font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 2; margin-bottom: 32px; padding: 0 8px; position: relative;
+}
+.poem-stanza:last-child { margin-bottom: 0; }
+.poem-stanza p { margin: 0; }
+.poem-stanza--final {
+  color: var(--accent-gold); font-weight: 500; font-size: 1.1rem;
+  padding-top: 12px; border-top: 1px solid rgba(240,212,138,0.15);
+}
 
 
 /* ============================================================
@@ -702,8 +746,11 @@ button { font-family: var(--font-body); cursor: pointer; border: none; outline: 
   .cake-layer-3 { bottom: 76px; width: 75px; height: 34px; }
   .cake-top { bottom: 110px; gap: 12px; }
 
-  .surprise-message { padding: 28px 24px; margin: 16px 16px 0; }
-  .surprise-message h3 { font-size: 1.5rem; }
+  .surprise-message { padding: 28px 20px; margin: 16px 12px 0; }
+  .surprise-message h3 { font-size: 1.4rem; }
+  .poem-stanza { font-size: 0.95rem; line-height: 1.9; margin-bottom: 24px; }
+  .poem-stanza--final { font-size: 1rem; }
+  .scroll-progress { height: 2px; }
 
   .music-toggle { top: 12px; right: 12px; width: 44px; height: 44px; }
   .hero-cta { padding: 18px 40px; font-size: 1rem; }

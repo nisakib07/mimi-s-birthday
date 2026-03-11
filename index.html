@@ -9,9 +9,15 @@
   <title>Happy Birthday, My Mimicat ✨</title>
   <meta name="description" content="A personal birthday journey made just for Mimicat." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/IMG_20220315_101808.jpg" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <!-- ═══ SCROLL PROGRESS BAR ═══ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- ═══════════════════════════════════════════
        LOCK SCREEN — Countdown until March 12
@@ -438,40 +444,48 @@
       <div class="surprise-message" id="surpriseMessage">
         <span class="surprise-emoji">🥳🎉🎂</span>
         <h3>গহীন এলোকেশী</h3>
-        <p>
-ওগো গহীন এলোকেশী,<br>
-আমার ঘুম কাতুরে চোখে<br>
-তোমার দু-গাল ভরা হাসি।<br>
-<br>
-সেই গালের গোলের মোহে<br>
-কতো কলম হলো খালি,<br>
-কতো ছন্দ হলো লেখা<br>
-যেন গভীর চোরাবালি।<br>
-<br>
-শোনো প্রাণের মায়াবতী,<br>
-আমার হাজার কালোর ভীড়ে<br>
-আশার আলো এক রতি।<br>
-<br>
-সেই আলোয় ভরা জীবন<br>
-আর জীবন আমার তুমি<br>
-তোমায় অনেক বাসি ভালো<br>
-আমার ছোট্ট সোনা মিমি😘<br>
-<br>
-এই নিয়ে তবে হলো কতো মোট?<br>
-সাতাশ, আটাশ নাকি ছাব্বিশ?<br>
-দিনক্ষণ গুনে কি হবে আর,<br>
-শুধু আমার হয়েই থাকিস😊<br>
-<br>
-কলমের ধার, নাই তেমন আর<br>
-তবু লিখতে বসি<br>
-আমার সাধ জাগে খুব, এভাবেই যদি<br>
-কেটে যায় বছর আশি!<br>
-<br>
-বেঁচে থাকো বাবু, বড় হউ সোনা,<br>
-দোয়ায় হাত দুখানা পাতি,<br>
-মনে রেখো বাবাই, আরো 'আশি বছর'<br>
-শুভ জন্মতিথি!
-</p>
+        <div class="poem-container">
+          <div class="poem-stanza">
+            <p>ওগো গহীন এলোকেশী,</p>
+            <p>আমার ঘুম কাতুরে চোখে</p>
+            <p>তোমার দু-গাল ভরা হাসি।</p>
+          </div>
+          <div class="poem-stanza">
+            <p>সেই গালের গোলের মোহে</p>
+            <p>কতো কলম হলো খালি,</p>
+            <p>কতো ছন্দ হলো লেখা</p>
+            <p>যেন গভীর চোরাবালি।</p>
+          </div>
+          <div class="poem-stanza">
+            <p>শোনো প্রাণের মায়াবতী,</p>
+            <p>আমার হাজার কালোর ভীড়ে</p>
+            <p>আশার আলো এক রতি।</p>
+          </div>
+          <div class="poem-stanza">
+            <p>সেই আলোয় ভরা জীবন</p>
+            <p>আর জীবন আমার তুমি</p>
+            <p>তোমায় অনেক বাসি ভালো</p>
+            <p>আমার ছোট্ট সোনা মিমি😘</p>
+          </div>
+          <div class="poem-stanza">
+            <p>এই নিয়ে তবে হলো কতো মোট?</p>
+            <p>সাতাশ, আটাশ নাকি ছাব্বিশ?</p>
+            <p>দিনক্ষণ গুনে কি হবে আর,</p>
+            <p>শুধু আমার হয়েই থাকিস😊</p>
+          </div>
+          <div class="poem-stanza">
+            <p>কলমের ধার, নাই তেমন আর</p>
+            <p>তবু লিখতে বসি</p>
+            <p>আমার সাধ জাগে খুব, এভাবেই যদি</p>
+            <p>কেটে যায় বছর আশি!</p>
+          </div>
+          <div class="poem-stanza poem-stanza--final">
+            <p>বেঁচে থাকো বাবু, বড় হউ সোনা,</p>
+            <p>দোয়ায় হাত দুখানা পাতি,</p>
+            <p>মনে রেখো বাবাই, আরো 'আশি বছর'</p>
+            <p>শুভ জন্মতিথি!</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
